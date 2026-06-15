@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2chat - Connect, Share & Communicate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-login:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-signup {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Feed Section */
+        .feed {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .feed-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .sidebar-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-item:hover {
+            color: #667eea;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.3rem;
+            color: #999;
+        }
+
+        .modal .btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .form-toggle {
+            text-align: center;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .form-toggle a {
+            color: #667eea;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-toggle a:hover {
+            text-decoration: underline;
+        }
+
+        /* Posts */
+        .post {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .post-info h4 {
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        .post-info p {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .post-content {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            color: #999;
+        }
+
+        .post-action {
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-action:hover {
+            color: #667eea;
+        }
+
+        /* Compose Box */
+        .compose-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .compose-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .compose-textarea-wrapper {
+            flex: 1;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .compose-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: flex-end;
+        }
+
+        .compose-actions .btn {
+            padding: 0.6rem 1.5rem;
+        }
+
+        /* Messaging Section */
+        .messaging-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 1rem;
+            height: 600px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .conversation-list {
+            border-right: 1px solid #eee;
+            overflow-y: auto;
+        }
+
+        .conversation-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .conversation-item:hover,
+        .conversation-item.active {
+            background: #f5f5f5;
+        }
+
+        .conversation-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .conversation-item-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .conversation-item-time {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .conversation-item-preview {
+            font-size: 0.9rem;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-area {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .chat-header {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+        }
+
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 1rem;
+            animation: slideIn 0.3s;
+        }
+
+        .message.own {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            word-wrap: break-word;
+        }
+
+        .message.other .message-bubble {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .message.own .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 0.3rem;
+            padding: 0 0.5rem;
+        }
+
+        .message-input-area {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .message-input-area input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .message-input-area input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .message-input-area button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .message-input-area button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Post Type Tabs */
+        .post-type-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .post-type-tab {
+            padding: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .post-type-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .post-type-tab:hover {
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                display: none;
+            }
+
+            .feed-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                height: 300px;
+                font-size: 4rem;
+            }
+
+            .messaging-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .conversation-list {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                max-height: 200px;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">2C</div>
+                2chat
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('messaging')">Messages</a></li>
+                <li><a onclick="showSection('feed')">Feed</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-login" onclick="openLoginModal()">Login</button>
+                <button class="btn btn-signup" onclick="openSignupModal()">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Connect with the World on 2chat</h1>
+        <p>Share your thoughts, connect with friends, and build communities</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="openSignupModal()">Get Started</button>
+            <button class="btn btn-secondary">Learn More</button>
+        </div>
+        <div class="hero-image">💬</div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <h2 class="section-title">Why Choose 2chat?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Community</h3>
+                    <p>Connect with millions of users from around the world and expand your network instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Real-Time Messaging</h3>
+                    <p>Instant messaging with friends and communities with real-time updates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is protected with end-to-end encryption and advanced security protocols.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Experience instant messaging and seamless performance across all devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Microblogs & Posts</h3>
+                    <p>Share your thoughts as quick microblogs or detailed posts with your community.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Platform</h3>
+                    <p>Access 2chat on web, mobile, and desktop with synced experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Messaging Section -->
+    <section class="feed" id="messaging" style="display: none;">
+        <h2 class="section-title">Real-Time Messaging</h2>
+        <div class="messaging-container">
+            <div class="conversation-list" id="conversationList">
+                <div class="conversation-item active">
+                    <div class="conversation-item-header">
+                        <span class="conversation-item-name">John Developer</span>
+                        <span class="conversation-item-time">2:30 PM</span>
+                    </div>
+                    <div class="conversation-item-preview">That sounds great! Let me know...</div>
+                </div>
+                <div class="conversation-item">
+                    <div class="conversation-item-header">
+                        <span class="conversation-item-name">Sarah Designer</span>
+                        <span class="conversation-item-time">1:15 PM</span>
+                    </div>
+                    <div class="conversation-item-preview">Check out the new design mockups</div>
+                </div>
+                <div class="conversation-item">
+                    <div class="conversation-item-header">
+                        <span class="conversation-item-name">Tech Community</span>
+                        <span class="conversation-item-time">11:45 AM</span>
+                    </div>
+                    <div class="conversation-item-preview">Welcome to Tech Community!</div>
+                </div>
+            </div>
+            <div class="chat-area">
+                <div class="chat-header">
+                    <h3>John Developer</h3>
+                    <small>Online</small>
+                </div>
+                <div class="messages" id="messagesArea">
+                    <div class="message other">
+                        <div>
+                            <div class="message-bubble">Hey! How are you doing?</div>
+                            <div class="message-time">2:15 PM</div>
+                        </div>
+                    </div>
+                    <div class="message own">
+                        <div>
+                            <div class="message-bubble">Great! Just finished the project</div>
+                            <div class="message-time">2:20 PM</div>
+                        </div>
+                    </div>
+                    <div class="message other">
+                        <div>
+                            <div class="message-bubble">That sounds great! Let me know when it's ready 🎉</div>
+                            <div class="message-time">2:25 PM</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-input-area">
+                    <input type="text" placeholder="Type a message..." id="messageInput">
+                    <button onclick="sendMessage()">➤</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Feed Section -->
+    <section class="feed" id="feed" style="display: none;">
+        <div class="feed-container">
+            <!-- Left Sidebar -->
+            <div class="sidebar">
+                <h3>Trending</h3>
+                <div class="sidebar-item">#Technology</div>
+                <div class="sidebar-item">#Design</div>
+                <div class="sidebar-item">#StartupLife</div>
+                <div class="sidebar-item">#WebDevelopment</div>
+                <div class="sidebar-item">#Innovation</div>
+            </div>
+
+            <!-- Main Feed -->
+            <div>
+                <!-- Compose Box -->
+                <div class="compose-box">
+                    <div class="post-type-tabs">
+                        <button class="post-type-tab active" onclick="switchPostType('post')">📝 Post</button>
+                        <button class="post-type-tab" onclick="switchPostType('microblog')">⚡ Microblog</button>
+                    </div>
+                    <div class="compose-header">
+                        <div class="avatar">You</div>
+                        <div class="compose-textarea-wrapper">
+                            <textarea id="postContent" placeholder="What's on your mind?"></textarea>
+                        </div>
+                    </div>
+                    <div class="compose-actions">
+                        <button class="btn btn-secondary" style="color: #667eea; border-color: #ddd;">📎 Attach</button>
+                        <button class="btn btn-signup" onclick="createPost()">Post</button>
+                    </div>
+                </div>
+
+                <!-- Posts Feed -->
+                <div id="postsFeed">
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="avatar">JD</div>
+                            <div class="post-info">
+                                <h4>John Developer</h4>
+                                <p>2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Just launched my new project on 2chat! Excited to share it with the community and get feedback. Check it out!
+                        </div>
+                        <div class="post-image">🚀</div>
+                        <div class="post-actions">
+                            <div class="post-action" onclick="likePost(this)">👍 Like</div>
+                            <div class="post-action">💬 Comment</div>
+                            <div class="post-action">↗️ Share</div>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="avatar">SD</div>
+                            <div class="post-info">
+                                <h4>Sarah Designer</h4>
+                                <p>⚡ Microblog • 4 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Design tip: Always prioritize user experience! 🎨
+                        </div>
+                        <div class="post-actions">
+                            <div class="post-action" onclick="likePost(this)">👍 Like</div>
+                            <div class="post-action">💬 Comment</div>
+                            <div class="post-action">↗️ Share</div>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="avatar">AM</div>
+                            <div class="post-info">
+                                <h4>Alex Marketing</h4>
+                                <p>6 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Thrilled to announce our community has reached 100k active members! Thank you all for being part of this amazing journey on 2chat.
+                        </div>
+                        <div class="post-image">🎉</div>
+                        <div class="post-actions">
+                            <div class="post-action" onclick="likePost(this)">👍 Like</div>
+                            <div class="post-action">💬 Comment</div>
+                            <div class="post-action">↗️ Share</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="sidebar">
+                <h3>Suggested Users</h3>
+                <div class="sidebar-item">👤 Jane Developer</div>
+                <div class="sidebar-item">👤 Tech Enthusiast</div>
+                <div class="sidebar-item">👤 Creative Mind</div>
+                <div class="sidebar-item">👤 Innovation Hub</div>
+                <div class="sidebar-item">👤 Community Leader</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login to 2chat</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-signup">Login</button>
+                <div class="form-toggle">
+                    Don't have an account? <a onclick="switchToSignup()">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignupModal()">&times;</span>
+            <h2>Create Your 2chat Account</h2>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required>
+                    <small>Username must be 3-20 characters, letters and numbers only</small>
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" id="dateOfBirth" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create a strong password" required>
+                    <small>Minimum 8 characters, with uppercase, lowercase, and numbers</small>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-signup">Create Account</button>
+                <div class="form-toggle">
+                    Already have an account? <a onclick="switchToLogin()">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>2chat</h4>
+                    <p>Connect, share, and communicate with the world on 2chat - the modern social platform.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#">Features</a>
+                    <a href="#">Security</a>
+                    <a href="#">Mobile App</a>
+                    <a href="#">Pricing</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 2chat. All rights reserved. | Made with ❤️ by the 2chat team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // User data storage (in production, this would be a database)
+        let users = JSON.parse(localStorage.getItem('2chatUsers')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        let posts = JSON.parse(localStorage.getItem('2chatPosts')) || [];
+
+        // Modal functions
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function openSignupModal() {
+            document.getElementById('signupModal').style.display = 'block';
+        }
+
+        function closeSignupModal() {
+            document.getElementById('signupModal').style.display = 'none';
+        }
+
+        function switchToSignup() {
+            closeLoginModal();
+            openSignupModal();
+        }
+
+        function switchToLogin() {
+            closeSignupModal();
+            openLoginModal();
+        }
+
+        // Form handlers
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('signupEmail').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            if (users.some(u => u.email === email || u.username === username)) {
+                alert('Email or username already exists!');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now(),
+                fullName,
+                email,
+                username,
+                password, // In production, this should be hashed
+                avatar: username[0].toUpperCase()
+            };
+
+            users.push(newUser);
+            localStorage.setItem('2chatUsers', JSON.stringify(users));
+            
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            alert(`Welcome to 2chat, ${fullName}!`);
+            closeSignupModal();
+            updateUIForLoggedIn();
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                alert(`Welcome back, ${user.fullName}!`);
+                closeLoginModal();
+                updateUIForLoggedIn();
+            } else {
+                alert('Invalid email or password!');
+            }
+        }
+
+        function updateUIForLoggedIn() {
+            if (currentUser) {
+                const navButtons = document.querySelector('.nav-buttons');
+                navButtons.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: #333;">Welcome, ${currentUser.username}</span>
+                        <button class="btn btn-login" onclick="logout()">Logout</button>
+                    </div>
+                `;
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            location.reload();
+        }
+
+        // Section navigation
+        function showSection(section) {
+            document.getElementById('home').style.display = section === 'home' ? 'block' : 'none';
+            document.getElementById('messaging').style.display = section === 'messaging' ? 'block' : 'none';
+            document.getElementById('feed').style.display = section === 'feed' ? 'block' : 'none';
+        }
+
+        // Post functions
+        let currentPostType = 'post';
+
+        function switchPostType(type) {
+            currentPostType = type;
+            document.querySelectorAll('.post-type-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            const textarea = document.getElementById('postContent');
+            textarea.placeholder = type === 'microblog' ? 'Share a quick thought...' : 'What\'s on your mind?';
+        }
+
+        function createPost() {
+            if (!currentUser) {
+                alert('Please login to create a post!');
+                openLoginModal();
+                return;
+            }
+
+            const content = document.getElementById('postContent').value.trim();
+            if (!content) {
+                alert('Please write something!');
+                return;
+            }
+
+            const post = {
+                id: Date.now(),
+                author: currentUser.username,
+                avatar: currentUser.avatar,
+                content,
+                type: currentPostType,
+                timestamp: new Date().toLocaleTimeString(),
+                likes: 0
+            };
+
+            posts.unshift(post);
+            localStorage.setItem('2chatPosts', JSON.stringify(posts));
+            document.getElementById('postContent').value = '';
+            loadPosts();
+            alert('Post created successfully!');
+        }
+
+        function loadPosts() {
+            const postsFeed = document.getElementById('postsFeed');
+            postsFeed.innerHTML = '';
+
+            posts.forEach(post => {
+                const postHtml = `
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="avatar">${post.avatar}</div>
+                            <div class="post-info">
+                                <h4>${post.author}</h4>
+                                <p>${post.type === 'microblog' ? '⚡ Microblog • ' : ''}${post.timestamp}</p>
+                            </div>
+                        </div>
+                        <div class="post-content">${post.content}</div>
+                        <div class="post-actions">
+                            <div class="post-action" onclick="likePost(this)">👍 Like</div>
+                            <div class="post-action">💬 Comment</div>
+                            <div class="post-action">↗️ Share</div>
+                        </div>
+                    </div>
+                `;
+                postsFeed.innerHTML += postHtml;
+            });
+        }
+
+        function likePost(element) {
+            if (!currentUser) {
+                openLoginModal();
+                return;
+            }
+            element.style.color = '#667eea';
+        }
+
+        // Messaging functions
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+
+            if (!message) return;
+
+            const messagesArea = document.getElementById('messagesArea');
+            const messageHtml = `
+                <div class="message own">
+                    <div>
+                        <div class="message-bubble">${message}</div>
+                        <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                    </div>
+                </div>
+            `;
+
+            messagesArea.innerHTML += messageHtml;
+            messageInput.value = '';
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+            if (event.target === signupModal) {
+                closeSignupModal();
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            loadPosts();
+            if (currentUser) {
+                updateUIForLoggedIn();
+            }
+        });
+
+        // Allow Enter key to send messages
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && document.getElementById('messageInput') === document.activeElement) {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
