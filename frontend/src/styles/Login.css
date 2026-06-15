@@ -1,0 +1,120 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  color: #888;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.login-card input {
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.login-card input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+}
+
+.login-card button[type="submit"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.login-card button[type="submit"]:hover {
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.login-card button[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.toggle-btn {
+  background: none;
+  color: #667eea;
+  padding: 10px;
+  width: 100%;
+  text-decoration: underline;
+  margin-bottom: 15px;
+}
+
+.toggle-btn:hover {
+  transform: none;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #eee;
+  margin: 20px 0;
+}
+
+.quick-login {
+  text-align: center;
+}
+
+.quick-login p {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.demo-btn {
+  background: #f0f0f0;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin: 5px;
+  font-size: 0.9rem;
+}
+
+.demo-btn:hover {
+  background: #e0e0e0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #c33;
+}
